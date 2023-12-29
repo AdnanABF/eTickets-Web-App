@@ -5,7 +5,7 @@ namespace eTickets.Models
     public class Producer
     {
         [Key]
-        public int ProducerID { get; set; }
+        public int ID { get; set; }
         [Display(Name = "Profile Picture")]
         public string ProfilePictureURL { get; set; }
         [Display(Name = "Full Name")]
