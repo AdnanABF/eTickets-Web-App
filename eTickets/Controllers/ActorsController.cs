@@ -4,6 +4,7 @@ using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.VisualBasic;
 
 namespace eTickets.Controllers
 {
@@ -28,13 +29,61 @@ namespace eTickets.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Actor actor)
+        public async Task<IActionResult> Create(Actor actor)
         {
             if (!ModelState.IsValid)
             {
                 return View(actor);
             }
-            _service.AddActor(actor);
+            await _service.AddActor(actor);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int Id)
+        {
+            var actorDetails = await _service.GetActorByActorId(Id);
+            if (actorDetails == null)
+                return View("NotFound");
+            return View(actorDetails);
+        }
+
+        public async Task<IActionResult> Edit(int Id)
+        {
+            var actorDetails = await _service.GetActorByActorId(Id);
+            if (actorDetails == null)
+                return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int Id, Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+            await _service.UpdateActor(Id, actor);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int Id)
+        {
+            var actorDetails = await _service.GetActorByActorId(Id);
+            if (actorDetails == null)
+                return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int Id)
+        {
+            var actorDetails = await _service.GetActorByActorId(Id);
+            if (actorDetails == null)
+                return View("NotFound");
+
+            await _service.DeleteActor(Id);
 
             return RedirectToAction(nameof(Index));
         }
