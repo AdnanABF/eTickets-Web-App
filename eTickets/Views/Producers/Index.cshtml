@@ -4,40 +4,42 @@
     ViewData["Title"] = "List of Producers";
 }
 
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
-                    <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                    <th>@Html.DisplayNameFor(model => model.Bio)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @foreach (var producer in Model)
-                {
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td class="align-middle">
-                            <img class="rounded-circle" src="@producer.ProfilePictureURL" alt="@producer.FullName" style="max-width:150px" />
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => producer.FullName)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => producer.Bio)
-                        </td>
-                        <td class="align-middle">
-                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@producer.ID"><i class="bi bi-pencil-square"></i>Edit</a>
-                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@producer.ID"><i class="bi bi-eye"></i>Details</a>
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@producer.ID"><i class="bi bi-trash"></i>Delete</a>
-                        </td>
+                        <th>@Html.DisplayNameFor(model => model.ProfilePictureURL)</th>
+                        <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Bio)</th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    @foreach (var producer in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <img class="rounded-circle" src="@producer.ProfilePictureURL" alt="@producer.FullName" style="max-width:150px" />
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => producer.FullName)
+                            </td>
+                            <td class="align-middle">
+                                @Html.DisplayFor(modelItem => producer.Bio)
+                            </td>
+                            <td class="align-middle">
+                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@producer.ID"><i class="bi bi-pencil-square"></i>Edit</a>
+                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@producer.ID"><i class="bi bi-eye"></i>Details</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@producer.ID"><i class="bi bi-trash"></i>Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

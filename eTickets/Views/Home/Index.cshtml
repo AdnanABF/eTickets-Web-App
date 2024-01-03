@@ -1,8 +1,17 @@
 ﻿@{
+    Layout = "_LayoutMainPage";
     ViewData["Title"] = "eTickets Web App";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="hero" class="hero route bg-image" style="background-image: url(/img/hero-bg.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+        <div class="table-cell">
+            <div class="container">
+                <h1 class="hero-title mb-4">eTicket Offers You</h1>
+                <p class="hero-subtitle"><span class="typed" data-typed-items="Entertainment, Fun, Movies, Stress Relief, No Boredom"></span></p>
+                <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" asp-controller="Home" asp-action="Index" role="button">Browse Movies</a></p>
+            </div>
+        </div>
+    </div>
 </div>
